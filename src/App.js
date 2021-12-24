@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+
+import Timer from "./components/Timer";
+
 import './App.css';
 
-function App() {
+
+const renderTime = ({ remainingTime }) => {
+  return (
+    <div className="timer">
+      <div className="value">{remainingTime}</div>
+    </div>
+  );
+};
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Timer />
     </div>
   );
 }
