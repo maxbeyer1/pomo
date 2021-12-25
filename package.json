@@ -11,7 +11,6 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "electron-util": "^0.17.2",
-    "menubar": "^9.1.1",
     "react": "^17.0.2",
     "react-countdown-circle-timer": "^2.5.4",
     "react-dom": "^17.0.2",
@@ -29,12 +28,6 @@
     "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
     "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       "last 1 electron version"
@@ -49,6 +42,13 @@
     "electron": "^16.0.5",
     "electron-builder": "^22.14.5",
     "electronmon": "^2.0.2",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.3",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "wait-on": "^6.0.0"
   },
   "build": {
