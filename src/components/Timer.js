@@ -1,6 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+
+import Pause from './Pause';
+import Play from './Play';
 
 const Timer = ({ workingDuration, breakDuration }) => {
   // create isPlaying state
@@ -10,8 +12,9 @@ const Timer = ({ workingDuration, breakDuration }) => {
 
   const [duration, setDuration] = React.useState(workingDuration);
 
-  const [key, setKey] = React.useState(0);
+  const [key, setKey] = React.useState(0); // key to reset countdown timer
 
+  // if timer status changes, set current duration
   React.useEffect(() => {
     setDuration(isBreak ? breakDuration : workingDuration);
   }, [isBreak]);
@@ -25,6 +28,7 @@ const Timer = ({ workingDuration, breakDuration }) => {
     setIsPlaying(false);
   };
 
+  // switch timer status after each completion
   const handleTimerSwitch = () => {
     if (isBreak) {
       setIsBreak(false);
@@ -33,6 +37,8 @@ const Timer = ({ workingDuration, breakDuration }) => {
     if (!isBreak) {
       setIsBreak(true);
     }
+
+    setIsPlaying(false);
   };
 
   // use prop from timer to display remainingTime
@@ -48,13 +54,9 @@ const Timer = ({ workingDuration, breakDuration }) => {
         </div>
         <div className="playpause-wrapper">
           {isPlaying ? (
-            <button type="button" onClick={stopTimer}>
-              Pause
-            </button>
+            <Pause onPlayerClick={stopTimer} />
           ) : (
-            <button type="button" onClick={startTimer}>
-              Start
-            </button>
+            <Play onPlayerClick={startTimer} />
           )}
         </div>
       </div>
@@ -67,10 +69,13 @@ const Timer = ({ workingDuration, breakDuration }) => {
         key={key}
         onComplete={() => {
           handleTimerSwitch();
-          setKey((prevKey) => prevKey + 1);
+          setKey((prevKey) => prevKey + 1); // reset timer countdown with new duration
         }}
         isPlaying={isPlaying}
         duration={duration}
+        strokeWidth={8}
+        size={250}
+        trailColor="#D2D3D7"
         colors={[
           ['#FB8484', 1],
         ]}

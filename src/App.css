@@ -1,22 +1,24 @@
 .timer-wrapper {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .timer {
   display: flex;
   justify-content: center;
-  flex-direction: column;
 }
 
 .remainingTime {
-  position: relative;
-  top: -105px;
+  position: fixed;
+  top: 25px;
   text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 36pt;
+  color: #bbbcc0;
 }
 
 .playpause-wrapper {
-  position: relative;
-  top: -10px;
+  position: fixed;
+  top: 190px;
 }

@@ -5,7 +5,7 @@ import './App.css';
 
 const App = () => (
   <div className="App">
-    <Timer workingDuration={5} breakDuration={8} />
+    <Timer workingDuration={10} breakDuration={8} />
   </div>
 );
 
