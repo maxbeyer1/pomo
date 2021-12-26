@@ -71,10 +71,11 @@ const Timer = ({ workingDuration, breakDuration }) => {
     );
   };
 
+  // change colors based on timer status
   let colors = [['#FB8484', 1]];
 
   if (isBreak) {
-    colors = [['#222B56', 1]];
+    colors = [['#323E7D', 1]];
   }
 
   return (

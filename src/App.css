@@ -1,3 +1,10 @@
+.settings-icon {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
 .timer-wrapper {
   display: flex;
   justify-content: center;
@@ -32,10 +39,12 @@
 .playpause-wrapper {
   position: fixed;
   top: 200px;
+  cursor: pointer;
 }
 
-/* use filter to change color of SVG play/pause icon */
+/* use CSS filters to change color of SVG play/pause icon */
+/* credit to: https://codepen.io/sosuke/pen/Pjoqqp */
 .filter-break {
-  filter: brightness(0) saturate(100%) invert(16%) sepia(10%) saturate(3874%)
-    hue-rotate(192deg) brightness(100%) contrast(95%);
+  filter: brightness(0) saturate(100%) invert(20%) sepia(97%) saturate(484%)
+    hue-rotate(195deg) brightness(95%) contrast(93%);
 }
