@@ -5,13 +5,10 @@ import Pause from './Pause';
 import Play from './Play';
 
 const Timer = ({ workingDuration, breakDuration }) => {
-  // create isPlaying state
   const [isPlaying, setIsPlaying] = React.useState(false);
-
   const [isBreak, setIsBreak] = React.useState(false);
 
-  const [duration, setDuration] = React.useState(workingDuration);
-
+  const [duration, setDuration] = React.useState(workingDuration); // start with working duration
   const [key, setKey] = React.useState(0); // key to reset countdown timer
 
   // if timer status changes, set current duration
@@ -47,12 +44,23 @@ const Timer = ({ workingDuration, breakDuration }) => {
     // eslint-disable-next-line prefer-template
     const seconds = ('0' + (remainingTime % 60)).slice(-2); // use .slice to add 0 before numbers less than 10 (ie. 1:9 -> 1:09)
 
+    let className = 'playpause-wrapper';
+
+    if (isBreak) className += ' filter-break';
+
     return (
       <div className="timer">
-        <div className="remainingTime">
+        <div className="remaining-time">
           <div className="value">{minutes}:{seconds}</div>
         </div>
-        <div className="playpause-wrapper">
+        <div className="timer-label">
+          {isBreak ? (
+            <p>BREAK</p>
+          ) : (
+            <p>WORKING</p>
+          )}
+        </div>
+        <div className={className}>
           {isPlaying ? (
             <Pause onPlayerClick={stopTimer} />
           ) : (
@@ -62,6 +70,12 @@ const Timer = ({ workingDuration, breakDuration }) => {
       </div>
     );
   };
+
+  let colors = [['#FB8484', 1]];
+
+  if (isBreak) {
+    colors = [['#222B56', 1]];
+  }
 
   return (
     <div className="timer-wrapper">
@@ -76,9 +90,7 @@ const Timer = ({ workingDuration, breakDuration }) => {
         strokeWidth={8}
         size={250}
         trailColor="#D2D3D7"
-        colors={[
-          ['#FB8484', 1],
-        ]}
+        colors={colors}
       >
         {renderTime}
       </CountdownCircleTimer>

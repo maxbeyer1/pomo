@@ -1,7 +1,7 @@
 .timer-wrapper {
   display: flex;
   justify-content: center;
-  padding-top: 100px;
+  padding-top: 110px;
 }
 
 .timer {
@@ -9,16 +9,33 @@
   justify-content: center;
 }
 
-.remainingTime {
+.remaining-time {
   position: fixed;
-  top: 25px;
+  top: 15px;
   text-align: center;
   font-family: "Montserrat", sans-serif;
+  font-weight: 600;
   font-size: 36pt;
   color: #bbbcc0;
 }
 
+.timer-label {
+  position: fixed;
+  top: 55px;
+  text-align: center;
+  font-family: "Monteserrat", sans-serif;
+  font-weight: 500;
+  font-size: 14pt;
+  color: #cacbcf;
+}
+
 .playpause-wrapper {
   position: fixed;
-  top: 190px;
+  top: 200px;
+}
+
+/* use filter to change color of SVG play/pause icon */
+.filter-break {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(10%) saturate(3874%)
+    hue-rotate(192deg) brightness(100%) contrast(95%);
 }
