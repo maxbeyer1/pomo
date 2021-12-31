@@ -39,8 +39,8 @@ const Settings = () => (
 
     <Flex justify="space-evenly">
       <Box>
-        <Heading pl="2.5" size="sm">Pomodoro</Heading>
-        <NumberInput maxW={100} defaultValue={15} min={0} max={60}>
+        <Heading pl="2.5" pb="1" size="sm">Pomodoro</Heading>
+        <NumberInput variant="filled" color="#7d7d7d" maxW={100} defaultValue={15} min={0} max={60}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
@@ -50,8 +50,8 @@ const Settings = () => (
       </Box>
 
       <Box pb="3">
-        <Heading pl="1" size="sm">Short Break</Heading>
-        <NumberInput maxW={100} defaultValue={5} min={0} max={60}>
+        <Heading pl="1" pb="1" size="sm">Short Break</Heading>
+        <NumberInput variant="filled" color="#7d7d7d" maxW={100} defaultValue={5} min={0} max={60}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
@@ -62,6 +62,20 @@ const Settings = () => (
     </Flex>
 
     <Divider />
+
+    <Flex>
+      <Heading p="5" size="sm"># of Pomodoros</Heading>
+      <Spacer />
+      <Box pt="3" pr="3">
+        <NumberInput variant="filled" color="#7d7d7d" maxW={100} defaultValue={5} min={0} max={60}>
+          <NumberInputField />
+          <NumberInputStepper>
+            <NumberIncrementStepper />
+            <NumberDecrementStepper />
+          </NumberInputStepper>
+        </NumberInput>
+      </Box>
+    </Flex>
   </Box>
 );
 
