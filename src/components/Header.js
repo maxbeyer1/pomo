@@ -1,10 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-import { ReactComponent as SettingsIcon } from './settings.svg';
+import { Settings } from 'react-feather';
 
 const Header = () => (
   <div className="header">
-    <SettingsIcon className="settings-icon" />
+    <NavLink to="/settings">
+      <Settings color="#FB8484" className="settings-icon" />
+    </NavLink>
   </div>
 );
 

@@ -28,7 +28,7 @@
 
 .timer-label {
   position: fixed;
-  top: 55px;
+  top: 75px;
   text-align: center;
   font-family: "Monteserrat", sans-serif;
   font-weight: 500;
@@ -38,7 +38,7 @@
 
 .playpause-wrapper {
   position: fixed;
-  top: 200px;
+  top: 205px;
   cursor: pointer;
 }
 

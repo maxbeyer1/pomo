@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
 import './index.css';
 import App from './App';
+import Settings from './components/Settings';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
+  <ChakraProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </Router>
+  </ChakraProvider>,
   document.getElementById('root'),
 );
 
