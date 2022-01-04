@@ -6,12 +6,16 @@ import './index.css';
 import App from './App';
 import Settings from './components/Settings';
 import reportWebVitals from './reportWebVitals';
+import theme from './theme/index';
+
+import '@fontsource/montserrat/600.css';
+import '@fontsource/quicksand/600.css';
 
 ReactDOM.render(
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>,
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <Router>
       <Routes>
         <Route path="/" element={<App />} />

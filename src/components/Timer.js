@@ -6,13 +6,10 @@ import { useBoolean } from '@chakra-ui/react';
 import { PlayCircle, PauseCircle } from 'react-feather';
 
 const Timer = ({ workingDuration, breakDuration }) => {
-  // const [isPlaying, setIsPlaying] = React.useState(false);
   const [playing, setPlaying] = useBoolean();
-  // const [isBreak, setIsBreak] = React.useState(false);
   const [isBreak, setIsBreak] = useBoolean();
 
-  const [duration, setDuration] = React.useState(workingDuration); // start with working duration
-  const [key, setKey] = React.useState(0); // key to reset countdown timer
+  const [duration, setDuration] = React.useState(workingDuration);
 
   // if timer status changes, set current duration
   React.useEffect(() => {
@@ -59,6 +56,8 @@ const Timer = ({ workingDuration, breakDuration }) => {
   if (isBreak) {
     colors = [['#323E7D', 1]];
   }
+
+  const [key, setKey] = React.useState(0); // key to reset countdown timer
 
   return (
     <div className="timer-wrapper">

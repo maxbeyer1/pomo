@@ -3,13 +3,13 @@ import React from 'react';
 
 import { Flex, Icon } from '@chakra-ui/react';
 
-const Pomodoros = () => {
+const Pomodoros = ({ totalPomodoros, completedPomodoros }) => {
   const circles = [];
-  const totalCircles = 8; // TODO: change based on settings input
-  const completedCircles = 5;
+  const totalCircles = totalPomodoros; // TODO: change based on settings input
+  const completedCircles = completedPomodoros;
 
   for (let i = 0; i < completedCircles; i += 1) {
-    circles.push(<CircleIcon key={i} color="#FB8484" />);
+    circles.push(<CircleIcon key={i} color="brand.200" />);
   }
 
   for (let i = 0; i < totalCircles - completedCircles; i += 1) {

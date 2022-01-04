@@ -19,64 +19,122 @@ import {
 
 import { Home } from 'react-feather';
 
-const Settings = () => (
-  <Box>
-    <Flex>
-      <Box p="2" pl="5">
-        <Heading>Settings</Heading>
-      </Box>
-      <Spacer />
-      <Link p="2" as={NavLink} to="/">
-        <IconButton aria-label="Home" variant="unstyled" color="#FB8484" icon={<Home />} />
-      </Link>
-    </Flex>
+const settingsReducer = (state, action) => {
+  switch (action.type) {
+    case 'CHANGE_BREAK_TIME':
+      return {
+        ...state,
+        breakDuration: action.payload * 60, // convert mins to seconds
+      };
+    case 'CHANGE_WORK_TIME':
+      return {
+        ...state,
+        workingDuration: action.payload * 60,
+      };
+    case 'CHANGE_TOTAL_POMODOROS':
+      return {
+        ...state,
+        totalPomodoros: action.payload,
+      };
+    case 'CHANGE_COMPLETED_POMODOROS':
+      return {
+        ...state,
+        completedPomodoros: action.payload,
+      };
+    default:
+      throw new Error();
+  }
+};
 
-    <Divider />
+const Settings = () => {
+  const [settings, dispatchSettings] = React.useReducer(
+    settingsReducer,
+    { // default values
+      breakDuration: 300, workingDuration: 1500, totalPomodoros: 8, completedPomodoros: 5,
+    },
+  );
 
-    <Center>
-      <Heading p="2" size="md">Times (min)</Heading>
-    </Center>
+  // handle changes for settings inputs
+  const handleWorkingChange = (event) => {
+    dispatchSettings({
+      type: 'CHANGE_WORK_TIME',
+      payload: event,
+    });
+  };
 
-    <Flex justify="space-evenly">
-      <Box>
-        <Heading pl="2.5" pb="1" size="sm">Pomodoro</Heading>
-        <NumberInput variant="filled" color="#7d7d7d" maxW={100} defaultValue={15} min={0} max={60}>
-          <NumberInputField />
-          <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
-          </NumberInputStepper>
-        </NumberInput>
-      </Box>
+  const handleBreakChange = (event) => {
+    dispatchSettings({
+      type: 'CHANGE_BREAK_TIME',
+      payload: event,
+    });
+  };
 
-      <Box pb="3">
-        <Heading pl="1" pb="1" size="sm">Short Break</Heading>
-        <NumberInput variant="filled" color="#7d7d7d" maxW={100} defaultValue={5} min={0} max={60}>
-          <NumberInputField />
-          <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
-          </NumberInputStepper>
-        </NumberInput>
-      </Box>
-    </Flex>
+  const handlePomodorosChange = (event) => {
+    dispatchSettings({
+      type: 'CHANGE_TOTAL_POMODOROS',
+      payload: event,
+    });
+  };
 
-    <Divider />
+  return (
+    <Box>
+      <Flex>
+        <Box p="2" pl="5">
+          <Heading color="gray.600">Settings</Heading>
+        </Box>
+        <Spacer />
+        <Link p="2" as={NavLink} to="/" state={{ settings }}>
+          <IconButton aria-label="Home" bgColor="transparent" color="brand.200" icon={<Home />} />
+        </Link>
+      </Flex>
 
-    <Flex>
-      <Heading p="5" size="sm"># of Pomodoros</Heading>
-      <Spacer />
-      <Box pt="3" pr="3">
-        <NumberInput variant="filled" color="#7d7d7d" maxW={100} defaultValue={5} min={0} max={60}>
-          <NumberInputField />
-          <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
-          </NumberInputStepper>
-        </NumberInput>
-      </Box>
-    </Flex>
-  </Box>
-);
+      <Divider size="md" width="90%" border="none" borderBottomWidth="0" />
+
+      <Center>
+        <Heading p="2" color="gray.600" size="md" fontFamily="body" fontWeight="semibold">Times (min)</Heading>
+      </Center>
+
+      <Flex justify="space-evenly">
+        <Box>
+          <Heading pl="2" pb="1" color="gray.500" size="sm" fontFamily="body" fontWeight="semibold">Pomodoro</Heading>
+          <NumberInput onChange={handleWorkingChange} variant="filled" color="#7d7d7d" maxW={100} value={settings.workingDuration / 60} min={0} max={60}>
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+        </Box>
+
+        <Box pb="3">
+          <Heading pl="0.5" pb="1" color="gray.500" size="sm" fontFamily="body" fontWeight="semibold">Short Break</Heading>
+          <NumberInput onChange={handleBreakChange} variant="filled" color="#7d7d7d" maxW={100} value={settings.breakDuration / 60} min={0} max={60}>
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+        </Box>
+      </Flex>
+
+      <Divider width="90%" />
+
+      <Flex>
+        <Heading p="5" color="gray.500" size="sm" fontFamily="body" fontWeight="semibold"># of Pomodoros</Heading>
+        <Spacer />
+        <Box pt="3" pr="4">
+          <NumberInput onChange={handlePomodorosChange} variant="filled" color="#7d7d7d" maxW={100} value={settings.totalPomodoros} min={0} max={10}>
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+        </Box>
+      </Flex>
+    </Box>
+  );
+};
 
 export default Settings;
