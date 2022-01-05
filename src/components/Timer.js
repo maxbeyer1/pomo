@@ -1,7 +1,9 @@
 import React from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
-import { useBoolean } from '@chakra-ui/react';
+import {
+  Box, Flex, Heading, Text, useBoolean,
+} from '@chakra-ui/react';
 
 import { PlayCircle, PauseCircle } from 'react-feather';
 
@@ -24,31 +26,39 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
     // eslint-disable-next-line prefer-template
     const seconds = ('0' + (remainingTime % 60)).slice(-2); // use .slice to add 0 before numbers less than 10 (ie. 1:9 -> 1:09)
 
-    let className = 'playpause-wrapper';
+    // let className = 'playpause-wrapper';
 
     // apply color filter if on break
-    if (isBreak) className += ' filter-break';
+    // if (isBreak) className += ' filter-break';
+
+    let iconColor = '#FB8484';
+
+    if (isBreak) {
+      iconColor = '#323E7D';
+    } else {
+      iconColor = '#FB8484';
+    }
 
     return (
-      <div className="timer">
-        <div className="remaining-time">
-          <div className="value">{minutes}:{seconds}</div>
-        </div>
-        <div className="timer-label">
+      <Flex justifyContent="center">
+        <Box pos="fixed" top="5" textAlign="center">
+          <Heading fontSize="36pt" color="#bbbcc0">{minutes}:{seconds}</Heading>
+        </Box>
+        <Box pos="fixed" top="75px" fontSize="md" color="#cacbcf">
           {isBreak ? (
-            <p>BREAK</p>
+            <Text>BREAK</Text>
           ) : (
-            <p>WORKING</p>
+            <Text>WORKING</Text>
           )}
-        </div>
-        <div className={className}>
+        </Box>
+        <Box _hover={{ cursor: 'pointer' }}>
           {playing ? (
-            <PauseCircle size={60} color="#FB8484" onClick={setPlaying.toggle} />
+            <PauseCircle size={60} color={iconColor} onClick={setPlaying.toggle} />
           ) : (
-            <PlayCircle size={60} color="#FB8484" onClick={setPlaying.toggle} />
+            <PlayCircle size={60} color={iconColor} onClick={setPlaying.toggle} />
           )}
-        </div>
-      </div>
+        </Box>
+      </Flex>
     );
   };
 
@@ -62,7 +72,7 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
   const [key, setKey] = React.useState(0); // key to reset countdown timer
 
   return (
-    <div className="timer-wrapper">
+    <Flex justifyContent="center" pt="110px">
       <CountdownCircleTimer
         key={key}
         onComplete={() => {
@@ -79,7 +89,7 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
       >
         {renderTime}
       </CountdownCircleTimer>
-    </div>
+    </Flex>
   );
 };
 

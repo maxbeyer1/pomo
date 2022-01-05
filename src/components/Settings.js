@@ -45,7 +45,7 @@ const Settings = () => {
   const [settings, dispatchSettings] = React.useReducer(
     settingsReducer,
     { // default values
-      breakDuration: 10, workingDuration: 10, totalPomodoros: 8,
+      breakDuration: 300, workingDuration: 1500, totalPomodoros: 8,
     },
   );
 

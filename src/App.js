@@ -6,8 +6,6 @@ import Timer from './components/Timer';
 import Header from './components/Header';
 import Pomodoros from './components/Pomodoros';
 
-import './App.css';
-
 const App = () => {
   const location = useLocation();
 
@@ -17,8 +15,8 @@ const App = () => {
   } = 0;
 
   if (!location.state) { // set default values if first load
-    workingDuration = 10;
-    breakDuration = 10;
+    workingDuration = 1500;
+    breakDuration = 300;
     totalPomodoros = 8;
   } else {
     ({ // get values from settings page
