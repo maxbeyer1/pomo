@@ -5,7 +5,7 @@ import { useBoolean } from '@chakra-ui/react';
 
 import { PlayCircle, PauseCircle } from 'react-feather';
 
-const Timer = ({ workingDuration, breakDuration }) => {
+const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
   const [playing, setPlaying] = useBoolean();
   const [isBreak, setIsBreak] = useBoolean();
 
@@ -14,6 +14,8 @@ const Timer = ({ workingDuration, breakDuration }) => {
   // if timer status changes, set current duration
   React.useEffect(() => {
     setDuration(isBreak ? breakDuration : workingDuration);
+
+    if (isBreak) setCompletedPomodoros((prevCount) => prevCount + 1);
   }, [isBreak]);
 
   // use prop from timer to display remainingTime

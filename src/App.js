@@ -13,27 +13,31 @@ const App = () => {
 
   // initialize default variables
   let {
-    workingDuration, breakDuration, totalPomodoros, completedPomodoros,
+    workingDuration, breakDuration, totalPomodoros,
   } = 0;
 
   if (!location.state) { // set default values if first load
-    workingDuration = 1500;
-    breakDuration = 300;
+    workingDuration = 10;
+    breakDuration = 10;
     totalPomodoros = 8;
-    completedPomodoros = 5;
   } else {
     ({ // get values from settings page
       workingDuration,
       breakDuration,
       totalPomodoros,
-      completedPomodoros,
     } = location.state.settings);
   }
+
+  const [completedPomodoros, setCompletedPomodoros] = React.useState(0);
 
   return (
     <div className="App">
       <Header />
-      <Timer workingDuration={workingDuration} breakDuration={breakDuration} />
+      <Timer
+        workingDuration={workingDuration}
+        breakDuration={breakDuration}
+        setCompletedPomodoros={setCompletedPomodoros}
+      />
       <Pomodoros totalPomodoros={totalPomodoros} completedPomodoros={completedPomodoros} />
     </div>
   );

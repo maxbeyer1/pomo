@@ -36,11 +36,6 @@ const settingsReducer = (state, action) => {
         ...state,
         totalPomodoros: action.payload,
       };
-    case 'CHANGE_COMPLETED_POMODOROS':
-      return {
-        ...state,
-        completedPomodoros: action.payload,
-      };
     default:
       throw new Error();
   }
@@ -50,7 +45,7 @@ const Settings = () => {
   const [settings, dispatchSettings] = React.useReducer(
     settingsReducer,
     { // default values
-      breakDuration: 300, workingDuration: 1500, totalPomodoros: 8, completedPomodoros: 5,
+      breakDuration: 10, workingDuration: 10, totalPomodoros: 8,
     },
   );
 
