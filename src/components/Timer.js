@@ -26,11 +26,6 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
     // eslint-disable-next-line prefer-template
     const seconds = ('0' + (remainingTime % 60)).slice(-2); // use .slice to add 0 before numbers less than 10 (ie. 1:9 -> 1:09)
 
-    // let className = 'playpause-wrapper';
-
-    // apply color filter if on break
-    // if (isBreak) className += ' filter-break';
-
     let iconColor = '#FB8484';
 
     if (isBreak) {
