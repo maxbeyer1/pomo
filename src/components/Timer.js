@@ -1,17 +1,25 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+import * as workerTimers from 'worker-timers';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-
 import {
   Box, Flex, Heading, Text, useBoolean,
 } from '@chakra-ui/react';
 
 import { PlayCircle, PauseCircle } from 'react-feather';
+import { usePageVisibility } from '../hooks/usePageVisibility';
 
 const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
+  // track playing/timer status
   const [playing, setPlaying] = useBoolean();
   const [isBreak, setIsBreak] = useBoolean();
 
   const [duration, setDuration] = React.useState(workingDuration);
+
+  // track time remaining in timer
+  const [timeRemaining, setTimeRemaining] = React.useState(0);
+
+  const [key, setKey] = React.useState(0); // key to reset countdown timer
 
   // if timer status changes, set current duration
   React.useEffect(() => {
@@ -20,11 +28,54 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
     if (isBreak) setCompletedPomodoros((prevCount) => prevCount + 1);
   }, [isBreak]);
 
+  // track whether app is visible (controls whether timer updates)
+  const isVisible = usePageVisibility();
+
+  // push notification to desktop
+  const handleNotification = (title, body) => {
+    const notif = new Notification(title, { body });
+  };
+
+  // this is required because Electron will not update time remaining if page is hidden
+  React.useEffect(() => {
+    let time = 0;
+
+    const intervalId = workerTimers.setInterval(() => {
+      // when page is not visible and timer is playing, track time in background
+      if (!isVisible && playing) {
+        time += 1;
+        console.log(time);
+      } else {
+        // workerTimers.clearInterval(intervalId);
+      }
+
+      if (time === timeRemaining - 10 && !isVisible && playing) {
+        handleNotification('10 seconds remaining!');
+      }
+
+      if (time === timeRemaining && !isVisible && playing) {
+        handleNotification('Timer completed!');
+      }
+    }, 1000);
+
+    return () => {
+      try {
+        workerTimers.clearInterval(intervalId);
+      } catch {
+        // Ignore error, return statement is called sometimes before interval created
+      }
+    };
+  }, [isVisible]);
+
   // use prop from timer to display remainingTime
   const renderTime = ({ remainingTime }) => {
     const minutes = Math.floor(remainingTime / 60); // get minutes from remainingTime in seconds
     // eslint-disable-next-line prefer-template
     const seconds = ('0' + (remainingTime % 60)).slice(-2); // use .slice to add 0 before numbers less than 10 (ie. 1:9 -> 1:09)
+
+    React.useEffect(() => {
+      setTimeRemaining(remainingTime);
+    }, [remainingTime]);
 
     let iconColor = '#FB8484';
 
@@ -63,8 +114,6 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
   if (isBreak) {
     colors = [['#323E7D', 1]];
   }
-
-  const [key, setKey] = React.useState(0); // key to reset countdown timer
 
   return (
     <Flex justifyContent="center" pt="110px">

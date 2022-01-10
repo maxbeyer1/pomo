@@ -14,7 +14,7 @@ const App = () => {
   } = 0;
 
   if (!location.state) { // set default values if first load
-    workingDuration = 1500;
+    workingDuration = 20;
     breakDuration = 300;
     totalPomodoros = 8;
   } else {
