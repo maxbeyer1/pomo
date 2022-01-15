@@ -18,6 +18,9 @@ contextBridge.exposeInMainWorld('electron', {
     set(property, val) {
       ipcRenderer.send('electron-store-set', property, val);
     },
+    clear() {
+      ipcRenderer.send('electron-store-clear');
+    },
     // Other method you want to add like has(), reset(), etc.
   },
   // Any other methods you want to expose in the window object.

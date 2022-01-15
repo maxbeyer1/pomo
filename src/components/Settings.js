@@ -7,6 +7,7 @@ import {
   Link,
   Heading,
   IconButton,
+  Button,
   Spacer,
   Divider,
   Center,
@@ -56,8 +57,6 @@ const Settings = () => {
       payload: event,
     });
 
-    // store.set('workTime', event);
-
     window.electron.store.set('workTime', parseInt(event, 10) * 60);
   };
 
@@ -66,8 +65,6 @@ const Settings = () => {
       type: 'CHANGE_BREAK_TIME',
       payload: event,
     });
-
-    // store.set('breakTime', event);
 
     window.electron.store.set('breakTime', parseInt(event, 10) * 60);
   };
@@ -78,9 +75,15 @@ const Settings = () => {
       payload: event,
     });
 
-    // store.set('totalPomodoros', event);
-
     window.electron.store.set('totalPomodoros', parseInt(event, 10));
+  };
+
+  const [value, setValue] = React.useState(0); // state to force update
+
+  const handleSettingsReset = () => {
+    window.electron.store.clear();
+
+    setValue(value + 1); // force rerender to update settings
   };
 
   return (
@@ -140,6 +143,10 @@ const Settings = () => {
           </NumberInput>
         </Box>
       </Flex>
+
+      <Center>
+        <Button color="gray.500" variant="outline" size="sm" position="fixed" bottom="5" onClick={() => handleSettingsReset()}>Reset to Defaults</Button>
+      </Center>
     </Box>
   );
 };
