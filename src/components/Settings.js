@@ -55,6 +55,10 @@ const Settings = () => {
       type: 'CHANGE_WORK_TIME',
       payload: event,
     });
+
+    // store.set('workTime', event);
+
+    window.electron.store.set('workTime', parseInt(event, 10) * 60);
   };
 
   const handleBreakChange = (event) => {
@@ -62,6 +66,10 @@ const Settings = () => {
       type: 'CHANGE_BREAK_TIME',
       payload: event,
     });
+
+    // store.set('breakTime', event);
+
+    window.electron.store.set('breakTime', parseInt(event, 10) * 60);
   };
 
   const handlePomodorosChange = (event) => {
@@ -69,6 +77,10 @@ const Settings = () => {
       type: 'CHANGE_TOTAL_POMODOROS',
       payload: event,
     });
+
+    // store.set('totalPomodoros', event);
+
+    window.electron.store.set('totalPomodoros', parseInt(event, 10));
   };
 
   return (
@@ -92,7 +104,7 @@ const Settings = () => {
       <Flex justify="space-evenly">
         <Box>
           <Heading pl="2" pb="1" color="gray.500" size="sm" fontFamily="body" fontWeight="semibold">Pomodoro</Heading>
-          <NumberInput onChange={handleWorkingChange} variant="filled" color="#7d7d7d" maxW={100} value={settings.workingDuration / 60} min={0} max={60}>
+          <NumberInput onChange={handleWorkingChange} variant="filled" color="#7d7d7d" maxW={100} value={window.electron.store.get('workTime') / 60} min={0} max={60}>
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -103,7 +115,7 @@ const Settings = () => {
 
         <Box pb="3">
           <Heading pl="0.5" pb="1" color="gray.500" size="sm" fontFamily="body" fontWeight="semibold">Short Break</Heading>
-          <NumberInput onChange={handleBreakChange} variant="filled" color="#7d7d7d" maxW={100} value={settings.breakDuration / 60} min={0} max={60}>
+          <NumberInput onChange={handleBreakChange} variant="filled" color="#7d7d7d" maxW={100} value={window.electron.store.get('breakTime') / 60} min={0} max={60}>
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -119,7 +131,7 @@ const Settings = () => {
         <Heading p="5" color="gray.500" size="sm" fontFamily="body" fontWeight="semibold"># of Pomodoros</Heading>
         <Spacer />
         <Box pt="3" pr="4">
-          <NumberInput onChange={handlePomodorosChange} variant="filled" color="#7d7d7d" maxW={100} value={settings.totalPomodoros} min={0} max={10}>
+          <NumberInput onChange={handlePomodorosChange} variant="filled" color="#7d7d7d" maxW={100} value={window.electron.store.get('totalPomodoros')} min={0} max={10}>
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />

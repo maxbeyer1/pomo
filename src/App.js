@@ -1,29 +1,13 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 
 import Timer from './components/Timer';
 import Header from './components/Header';
 import Pomodoros from './components/Pomodoros';
 
 const App = () => {
-  const location = useLocation();
-
-  // initialize default variables
-  let {
-    workingDuration, breakDuration, totalPomodoros,
-  } = 0;
-
-  if (!location.state) { // set default values if first load
-    workingDuration = 20;
-    breakDuration = 300;
-    totalPomodoros = 8;
-  } else {
-    ({ // get values from settings page
-      workingDuration,
-      breakDuration,
-      totalPomodoros,
-    } = location.state.settings);
-  }
+  const workingDuration = window.electron.store.get('workTime');
+  const breakDuration = window.electron.store.get('breakTime');
+  const totalPomodoros = window.electron.store.get('totalPomodoros');
 
   const [completedPomodoros, setCompletedPomodoros] = React.useState(0);
 

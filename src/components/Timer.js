@@ -45,8 +45,6 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
       if (!isVisible && playing) {
         time += 1;
         console.log(time);
-      } else {
-        // workerTimers.clearInterval(intervalId);
       }
 
       if (time === timeRemaining - 10 && !isVisible && playing) {

@@ -1,8 +1,11 @@
 /* eslint-disable no-shadow */
 // Module to control the application lifecycle and the native browser window.
+const {
+  app, BrowserWindow, protocol, ipcMain,
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { app, BrowserWindow, protocol } = require('electron');
+} = require('electron');
 const { is } = require('electron-util');
+const Store = require('electron-store');
 const path = require('path');
 const url = require('url');
 const TrayGenerator = require('./TrayGenerator');
@@ -89,6 +92,38 @@ app.on('ready', () => {
   setupLocalFilesNormalizerProxy();
 
   app.dock.hide();
+});
+
+const schema = {
+  workTime: {
+    type: 'number',
+    maximum: 3600,
+    minimum: 0,
+    default: 1500,
+  },
+  breakTime: {
+    type: 'number',
+    maximum: 3600,
+    minimum: 0,
+    default: 300,
+  },
+  totalPomodoros: {
+    type: 'number',
+    maximum: 10,
+    minimum: 0,
+    default: 8,
+  },
+};
+
+const store = new Store({ schema });
+
+ipcMain.on('electron-store-get', async (event, val) => {
+  // eslint-disable-next-line no-param-reassign
+  event.returnValue = store.get(val);
+});
+
+ipcMain.on('electron-store-set', async (event, key, val) => {
+  store.set(key, val);
 });
 
 // Quit when all windows are closed, except on macOS.
