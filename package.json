@@ -34,9 +34,11 @@
     "eject": "react-scripts eject",
     "electron:dev": "electron .",
     "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on -i 250 -w 250 http://localhost:3000 && electronmon .\"",
-    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "electron:package:mac": "npm run build && electron-builder -m -c.extraMetadata.main=build/electron.js",
     "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
-    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js"
+    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "browserslist": {
     "production": [
@@ -62,9 +64,10 @@
     "wait-on": "^6.0.0"
   },
   "build": {
-    "appId": "com.electron.myapp",
-    "productName": "My Electron App",
+    "appId": "com.maxbeyer.Pomo",
+    "productName": "Pomo",
     "files": [
+      "**/*",
       "build/**/*",
       "node_modules/**/*"
     ],
@@ -72,10 +75,7 @@
       "buildResources": "public"
     },
     "mac": {
-      "target": "dmg",
-      "extendInfo": {
-        "LSUIElement": 1
-      }
+      "target": "dmg"
     },
     "win": {
       "target": "nsis"

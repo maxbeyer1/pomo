@@ -1,12 +1,13 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import * as workerTimers from 'worker-timers';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import {
-  Box, Flex, Heading, Text, useBoolean,
+  Box, Flex, Heading, Text, IconButton, useBoolean,
 } from '@chakra-ui/react';
 
-import { PlayCircle, PauseCircle } from 'react-feather';
+import { PlayCircle, PauseCircle, RotateCcw } from 'react-feather';
 import { usePageVisibility } from '../hooks/usePageVisibility';
 
 const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
@@ -47,8 +48,8 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
         console.log(time);
       }
 
-      if (time === timeRemaining - 10 && !isVisible && playing) {
-        handleNotification('10 seconds remaining!');
+      if (time === timeRemaining - 300 && !isVisible && playing) {
+        handleNotification('5 minutes remaining!');
       }
 
       if (time === timeRemaining && !isVisible && playing) {
@@ -88,6 +89,7 @@ const Timer = ({ workingDuration, breakDuration, setCompletedPomodoros }) => {
         <Box pos="fixed" top="5" textAlign="center">
           <Heading fontSize="36pt" color="#bbbcc0">{minutes}:{seconds}</Heading>
         </Box>
+        {/* <IconButton pos="fixed" top="8" right="14" aria-label="Restart" bgColor="transparent" variant="unstyled" color="brand.200" icon={<RotateCcw />} _focus={{ outline: '0' }} /> */}
         <Box pos="fixed" top="75px" fontSize="md" color="#cacbcf">
           {isBreak ? (
             <Text>BREAK</Text>
