@@ -7,15 +7,19 @@ Pomo aims to unintrusively increase your productivity through thos method.
 ### Features
 
 **Unintrusive in your menubar**
+
 Pomo quietly lives in your menubar so you can open it briefly when needed and not worry about another app cluttering your desktop. 
 
 **Minimal notifications so you can focus on work**
+
 Get automatically alerted when there are 5 minutes left in the timer, and when it has completed.  
 
 **Customize every aspect to your preference**
+
 Change the length of break and work timers, as well as the amount of work sessions. _Themes/dark mode coming soon._
 
 **Built for macOS**
+
 Pomo is built with Electron and React, and therefore compatible with all versions of macOS starting with macOS 10.11 (El Capitan) including Intel and M1 Macs. _Windows/Linux is untested/unsupported_
 
 
