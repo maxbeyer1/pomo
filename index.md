@@ -22,6 +22,8 @@ Change the length of break and work timers, as well as the amount of work sessio
 
 Pomo is built with Electron and React, and therefore compatible with all versions of macOS starting with macOS 10.11 (El Capitan) including Intel and M1 Macs. _Windows/Linux is untested/unsupported_
 
+![Working](/assets/all-screenshots.png)
+
 
 ### Download
 
