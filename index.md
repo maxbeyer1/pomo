@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
+## Welcome to Pomo
 
-You can use the [editor on GitHub](https://github.com/maxbeyer1/pomo/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Pomo is a simple, minimal, and visually pleasing pomodoro timer that lives in your menu bar. Pomo revolves around the pomodoro method, a productivity technique that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Pomo aims to unintrusively increase your productivity through thos method. 
 
-### Markdown
+### Features
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+**Unintrusive in your menubar**
+Pomo quietly lives in your menubar so you can open it briefly when needed and not worry about another app cluttering your desktop. 
 
-```markdown
-Syntax highlighted code block -- test
+**Minimal notifications so you can focus on work**
+Get automatically alerted when there are 5 minutes left in the timer, and when it has completed.  
 
-# Header 1
-## Header 2
-### Header 3
+**Customize every aspect to your preference**
+Change the length of break and work timers, as well as the amount of work sessions. _Themes/dark mode coming soon._
 
-- Bulleted
-- List
+**Built for macOS**
+Pomo is built with Electron and React, and therefore compatible with all versions of macOS starting with macOS 10.11 (El Capitan) including Intel and M1 Macs. _Windows/Linux is untested/unsupported_
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+### Download
 
-[Link](url) and ![Image](src)
-```
+Click [here](https://github.com/maxbeyer1/pomo/releases/latest) to download the latest version for macOS. You can also download the source code on the Github repository [here](https://github.com/maxbeyer1/pomo). 
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/maxbeyer1/pomo/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+_Pomo is currently only tested on macOS. Windows/Linux are unsupported._
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having trouble with Pomo or want to suggest a feature? Create an issue [here](https://github.com/maxbeyer1/pomo/issues) and provide screenshots, steps to reproduce, or your proposed feature.
