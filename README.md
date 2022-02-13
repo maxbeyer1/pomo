@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+## Welcome to Pomo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Pomo is a simple, minimal, and visually pleasing pomodoro timer that lives in your menu bar. Pomo revolves around the pomodoro method, a productivity technique that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks.
 
-## Available Scripts
+Pomo aims to unintrusively increase your productivity through thos method. 
 
-In the project directory, you can run:
+### Features
 
-### `npm start`
+**Unintrusive in your menubar**
+Pomo quietly lives in your menubar so you can open it briefly when needed and not worry about another app cluttering your desktop. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Minimal notifications so you can focus on work**
+Get automatically alerted when there are 5 minutes left in the timer, and when it has completed.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Customize every aspect to your preference**
+Change the length of break and work timers, as well as the amount of work sessions. _Themes/dark mode coming soon._
 
-### `npm test`
+**Built for macOS**
+Pomo is built with Electron and React, and therefore compatible with all versions of macOS starting with macOS 10.11 (El Capitan) including Intel and M1 Macs. _Windows/Linux is untested/unsupported_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Download
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Click [here](https://github.com/maxbeyer1/pomo/releases/latest) to download the latest version for macOS. You can also download the source code on the Github repository [here](https://github.com/maxbeyer1/pomo). 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+_Pomo is currently only tested on macOS. Windows/Linux are unsupported._
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Support or Contact
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Having trouble with Pomo or want to suggest a feature? Create an issue [here](https://github.com/maxbeyer1/pomo/issues) and provide screenshots, steps to reproduce, or your proposed feature.
