@@ -1,6 +1,6 @@
 ## Pomo - the menubar pomodoro timer 
 
-Pomo is a simple, minimal, and visually pleasing pomodoro timer that lives in your menu bar. Pomo revolves around the pomodoro method, a productivity technique that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks.
+Pomo is a simple, minimal, and aesthetically pleasing pomodoro timer that lives in your menu bar. Pomo revolves around the pomodoro method, a productivity technique that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks.
 
 Pomo aims to unintrusively increase your productivity through this method. 
 
